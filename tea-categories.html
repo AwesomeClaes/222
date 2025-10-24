@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电子商务专升本四班</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#5D4037',
+            secondary: '#8D6E63',
+            accent: '#D7CCC8',
+            light: '#FAFAFA',
+            dark: '#3E2723'
+          },
+          fontFamily: {
+            sans: ['Noto Sans SC', 'sans-serif'],
+            serif: ['Noto Serif SC', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .category-card {
+        transition: all 0.3s ease;
+      }
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .section-animate {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .section-animate.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark font-sans">
+  <!-- 导航栏 -->
+  <header class="fixed w-full bg-white/95 shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <i class="fa fa-leaf text-primary text-2xl"></i>
+        <span class="font-serif font-bold text-xl md:text-2xl text-primary">茗韵</span>
+      </a>
+      
+      <!-- 桌面导航 -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="font-medium hover:text-primary transition-colors">首页</a>
+        <a href="tea-categories.html" class="font-medium text-primary border-b-2 border-primary pb-1">茶类大全</a>
+        <a href="#" class="font-medium hover:text-primary transition-colors">茶道文化</a>
+        <a href="#" class="font-medium hover:text-primary transition-colors">茶艺展示</a>
+        <a href="#" class="font-medium hover:text-primary transition-colors">关于我们</a>
+      </nav>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="mobileMenuBtn" class="md:hidden text-dark">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端菜单 -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+        <a href="index.html" class="py-2 hover:text-primary transition-colors">首页</a>
+        <a href="tea-categories.html" class="py-2 text-primary">茶类大全</a>
+        <a href="#" class="py-2 hover:text-primary transition-colors">茶道文化</a>
+        <a href="#" class="py-2 hover:text-primary transition-colors">茶艺展示</a>
+        <a href="#" class="py-2 hover:text-primary transition-colors">关于我们</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 面包屑导航 -->
+  <section class="pt-24 pb-4 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-sm text-gray-500">
+        <a href="index.html" class="hover:text-primary">首页</a> 
+        <i class="fa fa-angle-right mx-2 text-gray-400"></i> 
+        <span class="text-primary">茶类大全</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页面标题 -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="font-serif font-bold text-[clamp(2rem,4vw,3rem)] text-dark mb-4">中国六大茶类</h1>
+        <p class="text-gray-600 text-lg">
+          中国茶叶根据制作工艺和发酵程度的不同，分为绿茶、红茶、乌龙茶、白茶、黄茶和黑茶六大类。每一类茶都有其独特的加工工艺、品质特征和品饮价值。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 茶类导航 -->
+  <section class="py-6 bg-gray-50 sticky top-16 z-40 shadow-sm">
+    <div class="container mx-auto px-4">
+      <div class="flex overflow-x-auto pb-2 hide-scrollbar">
+        <div class="flex space-x-2 md:space-x-4 mx-auto">
+          <a href="#green-tea" class="whitespace-nowrap px-4 py-2 bg-primary text-white rounded-full text-sm font-medium">绿茶</a>
+          <a href="#black-tea" class="whitespace-nowrap px-4 py-2 bg-white hover:bg-primary/10 text-gray-700 rounded-full text-sm font-medium transition-colors">红茶</a>
+          <a href="#oolong-tea" class="whitespace-nowrap px-4 py-2 bg-white hover:bg-primary/10 text-gray-700 rounded-full text-sm font-medium transition-colors">乌龙茶</a>
+          <a href="#white-tea" class="whitespace-nowrap px-4 py-2 bg-white hover:bg-primary/10 text-gray-700 rounded-full text-sm font-medium transition-colors">白茶</a>
+          <a href="#yellow-tea" class="whitespace-nowrap px-4 py-2 bg-white hover:bg-primary/10 text-gray-700 rounded-full text-sm font-medium transition-colors">黄茶</a>
+          <a href="#dark-tea" class="whitespace-nowrap px-4 py-2 bg-white hover:bg-primary/10 text-gray-700 rounded-full text-sm font-medium transition-colors">黑茶</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 绿茶 -->
+  <section id="green-tea" class="py-16 bg-white section-animate">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-10 items-center mb-12">
+        <div class="md:w-1/3">
+          <img src="./image/绿茶.png" alt="绿茶" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-2/3">
+          <span class="inline-block bg-accent/30 text-primary text-sm px-3 py-1 rounded-full mb-3">不发酵茶 · 清汤绿叶</span>
+          <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-dark mb-4">绿茶</h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            绿茶是中国产量最高、饮用最广泛的茶类，属于不发酵茶，制作工艺主要包括杀青、揉捻和干燥三个步骤。由于未经发酵，绿茶最大限度地保留了茶叶中的天然物质，含有丰富的茶多酚、氨基酸、维生素等营养成分。
+          </p>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            绿茶的品质特征为"清汤绿叶"，干茶色泽翠绿或黄绿，茶汤清澈明亮，香气清高鲜爽，滋味鲜醇回甘。根据杀青和干燥方式的不同，绿茶可分为炒青绿茶、烘青绿茶、蒸青绿茶和晒青绿茶四类。
+          </p>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            绿茶性偏凉，适合夏季饮用，有清热解暑、提神醒脑、降脂减肥等功效。但由于含有较多茶多酚，胃寒者不宜过量饮用。
+          </p>
+        </div>
+      </div>
+      
+    
+    </div>
+  </section>
+
+  <!-- 红茶 -->
+  <section id="black-tea" class="py-16 bg-gray-50 section-animate">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-10 items-center mb-12">
+        <div class="md:w-1/3">
+          <img src="./image/hc.jpg" alt="红茶" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-2/3">
+          <span class="inline-block bg-accent/30 text-primary text-sm px-3 py-1 rounded-full mb-3">全发酵茶 · 红汤红叶</span>
+          <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-dark mb-4">红茶</h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            红茶是全发酵茶，制作工艺包括萎凋、揉捻、发酵和干燥四个主要步骤。发酵是红茶制作的关键环节，在酶的作用下，茶叶中的茶多酚发生氧化聚合反应，使茶叶由绿变红，形成红茶特有的品质特征。
+          </p>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            红茶的品质特征为"红汤红叶"，干茶色泽乌黑油润，茶汤红艳明亮，香气甜醇馥郁，滋味浓厚鲜爽。由于经过充分发酵，红茶中的茶多酚含量大幅减少，刺激性降低，品性温和。
+          </p>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            红茶是中国主要出口茶类，在国际市场上享有盛誉。红茶适合四季饮用，尤其适合冬季，有暖胃御寒、提神醒脑的功效。红茶既可以清饮，也可以加入牛奶、蜂蜜等调饮，风味独特。
+          </p>
+        </div>
+      </div>
+     
+  </section>
+
+  <!-- 乌龙茶 -->
+  <section id="oolong-tea" class="py-16 bg-white section-animate">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-10 items-center mb-12">
+        <div class="md:w-1/3">
+          <img src="./image/乌龙茶.jpg" alt="乌龙茶" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-2/3">
+          <span class="inline-block bg-accent/30 text-primary text-sm px-3 py-1 rounded-full mb-3">半发酵茶 · 绿叶红镶边</span>
+          <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-dark mb-4">乌龙茶</h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            乌龙茶又称青茶，属于半发酵茶，制作工艺复杂，主要包括萎凋、做青、炒青、揉捻和烘焙等步骤。做青是乌龙茶制作的关键工序，通过摇青和静置的反复进行，使茶叶边缘氧化变红，形成"绿叶红镶边"的独特特征。
+          </p>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            乌龙茶的发酵程度介于绿茶和红茶之间（一般在10%-70%之间），兼具绿茶的清香和红茶的醇厚。其品质特征为外形条索粗壮，色泽青褐，茶汤金黄明亮，香气馥郁持久，滋味甘鲜爽口，回甘明显。
+          </p>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            乌龙茶是中国特有的茶类，主要产于福建、广东和台湾地区。乌龙茶含有丰富的茶多酚和咖啡碱，有提神醒脑、降脂减肥、延缓衰老等功效。乌龙茶适合用小壶小杯冲泡，品味其独特的香气和滋味变化。
+          </p>
+        </div>
+      </div>
+      
+    
+    </div>
+  </section>
+
+  <!-- 其他茶类简介 -->
+  <section id="white-tea" class="py-16 bg-gray-50 section-animate">
+    <div class="container mx-auto px-4">
+      <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-dark mb-8 text-center">白茶 · 黄茶 · 黑茶</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- 白茶 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <div class="h-64 overflow-hidden">
+            <img src="./image/白茶.jpg" alt="白茶" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <span class="inline-block bg-accent/30 text-primary text-sm px-3 py-1 rounded-full mb-3">微发酵茶</span>
+            <h3 class="font-serif font-bold text-xl mb-3">白茶</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              白茶是中国特有的茶类，属微发酵茶（发酵度5%-10%），制作工艺最简单，只有萎凋和干燥两个步骤，最大限度地保留了茶叶的天然物质。
+            </p>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              白茶的品质特征为干茶满披白毫，色泽银白或灰绿，茶汤清澈淡黄，香气清幽，滋味鲜爽甘醇。著名品种有白毫银针、白牡丹、寿眉等。
+            </p>
+            <a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+              了解更多 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 黄茶 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <div class="h-64 overflow-hidden">
+            <img src="./image/黄茶.png" alt="黄茶" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <span class="inline-block bg-accent/30 text-primary text-sm px-3 py-1 rounded-full mb-3">轻发酵茶</span>
+            <h3 class="font-serif font-bold text-xl mb-3">黄茶</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              黄茶属轻发酵茶（发酵度10%-20%），制作工艺与绿茶相似，但增加了"闷黄"工序，使茶叶呈现黄色。这是黄茶区别于其他茶类的关键工艺。
+            </p>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              黄茶的品质特征为干茶色泽黄润，茶汤黄亮，香气清悦，滋味醇厚甘爽。著名品种有君山银针、霍山黄芽、蒙顶黄芽等。
+            </p>
+            <a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+              了解更多 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 黑茶 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <div class="h-64 overflow-hidden">
+            <img src="./image/黑茶png.png" alt="黑茶" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <span class="inline-block bg-accent/30 text-primary text-sm px-3 py-1 rounded-full mb-3">后发酵茶</span>
+            <h3 class="font-serif font-bold text-xl mb-3">黑茶</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              黑茶属后发酵茶，制作工艺包括杀青、揉捻、渥堆和干燥等步骤，其中"渥堆"是黑茶特有的工序，通过微生物作用使茶叶发生复杂的化学变化。
+            </p>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              黑茶的品质特征为干茶色泽乌黑油润，茶汤橙黄或红浓，香气纯正陈香，滋味醇厚回甘。著名品种有普洱茶、安化黑茶、六堡茶等。
+            </p>
+            <a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+              了解更多 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <i class="fa fa-leaf text-accent text-2xl"></i>
+            <span class="font-serif font-bold text-xl text-white">茗韵</span>
+          </div>
+          <p class="text-gray-400 mb-4">传承千年茶文化，品味中华韵味。探索茶的世界，感受生活之美。</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-weibo"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-wechat"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-youtube-play"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-4">快速链接</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+            <li><a href="tea-categories.html" class="text-gray-400 hover:text-white transition-colors">茶类大全</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">茶道文化</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">茶艺展示</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-4">茶类分类</h3>
+          <ul class="space-y-2">
+            <li><a href="tea-categories.html#green-tea" class="text-gray-400 hover:text-white transition-colors">绿茶</a></li>
+            <li><a href="tea-categories.html#black-tea" class="text-gray-400 hover:text-white transition-colors">红茶</a></li>
+            <li><a href="tea-categories.html#oolong-tea" class="text-gray-400 hover:text-white transition-colors">乌龙茶</a></li>
+            <li><a href="tea-categories.html#white-tea" class="text-gray-400 hover:text-white transition-colors">白茶</a></li>
+            <li><a href="tea-categories.html#yellow-tea" class="text-gray-400 hover:text-white transition-colors">黄茶</a></li>
+            <li><a href="tea-categories.html#dark-tea" class="text-gray-400 hover:text-white transition-colors">黑茶</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-4">联系我们</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center"><i class="fa fa-map-marker text-accent mr-2"></i> <span class="text-gray-400">杭州市西湖区龙井路</span></li>
+            <li class="flex items-center"><i class="fa fa-phone text-accent mr-2"></i> <span class="text-gray-400">+86 571 8888 7777</span></li>
+            <li class="flex items-center"><i class="fa fa-envelope text-accent mr-2"></i> <span class="text-gray-400">contact@mingyun.com</span></li>
+          </ul>
+          <div class="mt-4">
+            <h4 class="font-medium mb-2">订阅茶讯</h4>
+            <div class="flex">
+              <input type="email" placeholder="您的邮箱地址" class="px-3 py-2 bg-gray-700 text-white rounded-l-md focus:outline-none w-full">
+              <button class="bg-primary hover:bg-primary/90 text-white px-3 py-2 rounded-r-md transition-colors">
+                <i class="fa fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
+        <p>电子商务专升本四班</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 移动端菜单切换
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow');
+        header.classList.remove('py-4');
+      } else {
+        header.classList.add('py-4');
+        header.classList.remove('py-2', 'shadow');
+      }
+      
+      // 滚动显示动画
+      const sections = document.querySelectorAll('.section-animate');
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight * 0.75) {
+          section.classList.add('active');
+        }
+      });
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const headerHeight = document.querySelector('header').offsetHeight + 20;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
+          // 关闭移动菜单
+          document.getElementById('mobileMenu').classList.add('hidden');
+        }
+      });
+    });
+    
+    // 初始加载时触发一次滚动检查
+    window.dispatchEvent(new Event('scroll'));
+  </script>
+</body>
+</html>

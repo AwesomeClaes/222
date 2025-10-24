@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电子商务专升本四班</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#5D4037',
+            secondary: '#8D6E63',
+            accent: '#D7CCC8',
+            light: '#FAFAFA',
+            dark: '#3E2723'
+          },
+          fontFamily: {
+            sans: ['Noto Sans SC', 'sans-serif'],
+            serif: ['Noto Serif SC', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .step-item {
+        transition: transform 0.3s ease;
+      }
+      .step-item:hover {
+        transform: translateX(5px);
+      }
+      .image-zoom {
+        overflow: hidden;
+      }
+      .image-zoom img {
+        transition: transform 0.5s ease;
+      }
+      .image-zoom:hover img {
+        transform: scale(1.05);
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark font-sans">
+  <!-- 导航栏 -->
+  <header class="fixed w-full bg-white/95 shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <i class="fa fa-leaf text-primary text-2xl"></i>
+        <span class="font-serif font-bold text-xl md:text-2xl text-primary">茗韵</span>
+      </a>
+      
+      <!-- 桌面导航 -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="font-medium hover:text-primary transition-colors">首页</a>
+        <a href="tea-categories.html" class="font-medium hover:text-primary transition-colors">茶类大全</a>
+        <a href="#" class="font-medium hover:text-primary transition-colors">茶道文化</a>
+        <a href="#" class="font-medium hover:text-primary transition-colors">茶艺展示</a>
+        <a href="#" class="font-medium hover:text-primary transition-colors">关于我们</a>
+      </nav>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="mobileMenuBtn" class="md:hidden text-dark">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端菜单 -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+        <a href="index.html" class="py-2 hover:text-primary transition-colors">首页</a>
+        <a href="tea-categories.html" class="py-2 hover:text-primary transition-colors">茶类大全</a>
+        <a href="#" class="py-2 hover:text-primary transition-colors">茶道文化</a>
+        <a href="#" class="py-2 hover:text-primary transition-colors">茶艺展示</a>
+        <a href="#" class="py-2 hover:text-primary transition-colors">关于我们</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 面包屑导航 -->
+  <section class="pt-24 pb-4 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-sm text-gray-500">
+        <a href="index.html" class="hover:text-primary">首页</a> 
+        <i class="fa fa-angle-right mx-2 text-gray-400"></i> 
+        <a href="tea-categories.html" class="hover:text-primary">茶类大全</a>
+        <i class="fa fa-angle-right mx-2 text-gray-400"></i>
+        <a href="tea-categories.html#green-tea" class="hover:text-primary">绿茶</a>
+        <i class="fa fa-angle-right mx-2 text-gray-400"></i>
+        <span class="text-primary">西湖龙井</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 详情内容区 -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row gap-10">
+        
+      
+        
+        <!-- 右侧内容区 -->
+        <div class="lg">
+          <span class="inline-block bg-accent/30 text-primary text-sm px-3 py-1 rounded-full mb-3">绿茶 / 不发酵茶</span>
+          <h1 class="font-serif font-bold text-[clamp(1.8rem,3vw,2.5rem)] text-dark mb-4">西湖龙井</h1>
+          
+          <div class="flex items-center mb-6">
+            <div class="flex text-yellow-400 mr-2">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <span class="text-gray-600 text-sm">5.0 (218人评价)</span>
+          </div>
+          
+          <div class="mb-6">
+            <p class="text-gray-600 leading-relaxed mb-4">
+              西湖龙井是中国十大名茶之首，产于浙江省杭州市西湖龙井村周围群山，已有一千二百余年历史。乾隆皇帝游览杭州时，曾在狮峰山下亲自采茶，并赐予十八棵茶树"御茶"称号。
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              西湖龙井以"色绿、香郁、味甘、形美"四绝著称于世。其外形扁平挺直，色泽翠绿明亮，香气清高馥郁，滋味鲜爽甘醇，汤色清澈明亮。
+            </p>
+          </div>
+          
+          <div class="bg-light p-5 rounded-lg mb-6">
+            <h3 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fa fa-info-circle text-primary mr-2"></i> 基本信息
+            </h3>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div>
+                <span class="text-gray-500">产地：</span>
+                <span class="font-medium">浙江杭州西湖区</span>
+              </div>
+              <div>
+                <span class="text-gray-500">特点：</span>
+                <span class="font-medium">色绿、香郁、味甘、形美</span>
+              </div>
+              <div>
+                <span class="text-gray-500">发酵度：</span>
+                <span class="font-medium">不发酵</span>
+              </div>
+              <div>
+                <span class="text-gray-500">汤色：</span>
+                <span class="font-medium">清澈明亮</span>
+              </div>
+              <div>
+                <span class="text-gray-500">香气：</span>
+                <span class="font-medium">清高馥郁</span>
+              </div>
+              <div>
+                <span class="text-gray-500">滋味：</span>
+                <span class="font-medium">鲜爽甘醇</span>
+              </div>
+            </div>
+          </div>
+          
+          <a href="#brewing" class="inline-block bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md transition-all font-medium hover:shadow-lg">
+            查看冲泡方法
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 历史渊源 -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-dark mb-8 text-center">历史渊源与产区</h2>
+      
+      <div class="flex flex-col lg:flex-row gap-10 items-center">
+        <div class="lg:w-1/2">
+          <img src="https://picsum.photos/id/106/800/600" alt="西湖龙井产地" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <div class="lg:w-1/2">
+          <h3 class="font-serif font-bold text-2xl mb-4">千年传承，品质如一</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            西湖龙井的历史可追溯至唐代，茶圣陆羽在《茶经》中就有杭州天竺、灵隐二寺产茶的记载。宋代，西湖茶叶被列为贡品。明代，西湖龙井的制作工艺基本形成。清代，西湖龙井声名远扬，乾隆皇帝南巡时，曾到狮峰山下品茶，并赐予十八棵茶树"御茶"称号。
+          </p>
+          
+          <h3 class="font-serif font-bold text-xl mb-3 mt-8">核心产区</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            西湖龙井的核心产区为西湖周围的狮峰、龙井、云栖、虎跑、梅家坞五大名山，其中以狮峰所产的龙井品质最佳，被誉为"狮峰龙井"。
+          </p>
+          
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start step-item">
+              <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+              <div>
+                <span class="font-medium">狮峰产区</span>
+                <p class="text-sm text-gray-600">位于西湖西北部，云雾缭绕，土壤肥沃，所产龙井香气高锐持久，滋味鲜醇甘爽</p>
+              </div>
+            </li>
+            <li class="flex items-start step-item">
+              <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+              <div>
+                <span class="font-medium">龙井产区</span>
+                <p class="text-sm text-gray-600">位于西湖西部，所产龙井色泽翠绿，香气清高，滋味鲜爽</p>
+              </div>
+            </li>
+            <li class="flex items-start step-item">
+              <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+              <div>
+                <span class="font-medium">梅家坞产区</span>
+                <p class="text-sm text-gray-600">位于西湖西南部，所产龙井外形扁平光滑，香气浓郁，滋味醇厚</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- 冲泡方法 -->
+  <section id="brewing" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-dark mb-8 text-center">冲泡方法与品饮</h2>
+      
+      <div class="flex flex-col lg:flex-row gap-10 items-center">
+        <div class="lg:w-1/2 order-2 lg:order-1">
+          <h3 class="font-serif font-bold text-2xl mb-4">正确冲泡，品味真味</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            西湖龙井的冲泡有一定讲究，正确的冲泡方法能充分展现其色、香、味、形之美。冲泡西湖龙井宜用玻璃杯或白瓷盖碗，以便欣赏茶叶在水中的舒展姿态和茶汤的清澈色泽。
+          </p>
+          
+          <div class="space-y-6 mb-8">
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-4">
+                <span class="font-bold">1</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg mb-1">备具选水</h4>
+                <p class="text-gray-600">选择透明玻璃杯或白瓷盖碗，便于观赏。水质以清澈甘冽的山泉水或纯净水为佳，水温控制在80-85℃（不宜用沸水，以免破坏茶叶中的营养成分和香气）。</p>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-4">
+                <span class="font-bold">2</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg mb-1">投茶量</h4>
+                <p class="text-gray-600">一般而言，3-5克茶叶搭配150-200毫升水为宜，可根据个人口味适当调整。投茶量过多则滋味苦涩，过少则滋味淡薄。</p>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-4">
+                <span class="font-bold">3</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg mb-1">冲泡方法</h4>
+                <p class="text-gray-600">先注入适量热水温杯，然后放入茶叶，轻轻晃动杯子使茶叶均匀受热，再沿杯壁缓慢注入热水至七分满，静置1-2分钟即可饮用。</p>
+              </div>
+            </div>
+            
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-4">
+                <span class="font-bold">4</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg mb-1">品饮技巧</h4>
+                <p class="text-gray-600">饮用前先闻香，感受西湖龙井特有的清香；再观色，欣赏茶汤的清澈明亮；最后品味，感受其鲜爽甘醇的滋味。一杯茶可冲泡3-4次，每次冲泡时间逐渐延长。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:w-1/2 order-1 lg:order-2">
+          <img src="https://picsum.photos/id/425/800/600" alt="西湖龙井冲泡" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 保健功效 -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-dark mb-8 text-center">保健功效与注意事项</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div>
+          <h3 class="font-serif font-bold text-2xl mb-6 flex items-center">
+            <i class="fa fa-heartbeat text-primary mr-3 text-2xl"></i> 保健功效
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+              <p class="text-gray-600">富含茶多酚和维生素C，具有抗氧化、延缓衰老的作用</p>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+              <p class="text-gray-600">含有咖啡碱和茶碱，能兴奋中枢神经，起到提神醒脑、缓解疲劳的作用</p>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+              <p class="text-gray-600">有助于促进新陈代谢，帮助消化，降低血脂，预防心血管疾病</p>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+              <p class="text-gray-600">具有一定的抗菌消炎作用，有助于增强免疫力</p>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+              <p class="text-gray-600">含有丰富的氟元素，有助于预防龋齿，保护牙齿健康</p>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-serif font-bold text-2xl mb-6 flex items-center">
+            <i class="fa fa-exclamation-triangle text-primary mr-3 text-2xl"></i> 注意事项
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i class="fa fa-times-circle text-red-500 mt-1 mr-3"></i>
+              <p class="text-gray-600">西湖龙井性偏凉，胃寒、胃溃疡患者不宜过量饮用</p>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-times-circle text-red-500 mt-1 mr-3"></i>
+              <p class="text-gray-600">睡前不宜饮用，以免影响睡眠质量</p>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-times-circle text-red-500 mt-1 mr-3"></i>
+              <p class="text-gray-600">不宜用沸水冲泡，以免破坏茶叶中的营养成分和活性物质</p>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-times-circle text-red-500 mt-1 mr-3"></i>
+              <p class="text-gray-600">孕妇和哺乳期妇女应适量饮用，不宜过量</p>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-times-circle text-red-500 mt-1 mr-3"></i>
+              <p class="text-gray-600">存放时应密封置于阴凉干燥处，避免阳光直射和异味污染</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <i class="fa fa-leaf text-accent text-2xl"></i>
+            <span class="font-serif font-bold text-xl text-white">茗韵</span>
+          </div>
+          <p class="text-gray-400 mb-4">传承千年茶文化，品味中华韵味。探索茶的世界，感受生活之美。</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-weibo"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-wechat"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-youtube-play"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-4">快速链接</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+            <li><a href="tea-categories.html" class="text-gray-400 hover:text-white transition-colors">茶类大全</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">茶道文化</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">茶艺展示</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-4">茶类分类</h3>
+          <ul class="space-y-2">
+            <li><a href="tea-categories.html#green-tea" class="text-gray-400 hover:text-white transition-colors">绿茶</a></li>
+            <li><a href="tea-categories.html#black-tea" class="text-gray-400 hover:text-white transition-colors">红茶</a></li>
+            <li><a href="tea-categories.html#oolong-tea" class="text-gray-400 hover:text-white transition-colors">乌龙茶</a></li>
+            <li><a href="tea-categories.html#white-tea" class="text-gray-400 hover:text-white transition-colors">白茶</a></li>
+            <li><a href="tea-categories.html#yellow-tea" class="text-gray-400 hover:text-white transition-colors">黄茶</a></li>
+            <li><a href="tea-categories.html#dark-tea" class="text-gray-400 hover:text-white transition-colors">黑茶</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-4">联系我们</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center"><i class="fa fa-map-marker text-accent mr-2"></i> <span class="text-gray-400">杭州市西湖区龙井路</span></li>
+            <li class="flex items-center"><i class="fa fa-phone text-accent mr-2"></i> <span class="text-gray-400">+86 571 8888 7777</span></li>
+            <li class="flex items-center"><i class="fa fa-envelope text-accent mr-2"></i> <span class="text-gray-400">contact@mingyun.com</span></li>
+          </ul>
+          <div class="mt-4">
+            <h4 class="font-medium mb-2">订阅茶讯</h4>
+            <div class="flex">
+              <input type="email" placeholder="您的邮箱地址" class="px-3 py-2 bg-gray-700 text-white rounded-l-md focus:outline-none w-full">
+              <button class="bg-primary hover:bg-primary/90 text-white px-3 py-2 rounded-r-md transition-colors">
+                <i class="fa fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
+        <p>电子商务专升本四班</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 移动端菜单切换
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow');
+        header.classList.remove('py-4');
+      } else {
+        header.classList.add('py-4');
+        header.classList.remove('py-2', 'shadow');
+      }
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const headerHeight = document.querySelector('header').offsetHeight + 20;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
+          // 关闭移动菜单
+          document.getElementById('mobileMenu').classList.add('hidden');
+        }
+      });
+    });
+    
+    // 图片切换功能
+    const mainImage = document.querySelector('.lg\\:w-1\\/2 .image-zoom img');
+    const thumbImages = document.querySelectorAll('.grid.cols-4 .image-zoom img');
+    
+    thumbImages.forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        mainImage.src = this.src.replace('/200/200', '/800/800');
+        mainImage.alt = this.alt;
+      });
+    });
+  </script>
+</body>
+</html>
